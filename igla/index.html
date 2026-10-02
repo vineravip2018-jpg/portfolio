@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Игла и Нить – ремонт и подгонка одежды в Москве</title>
+<meta name="description" content="Ателье «Игла и Нить» в Москве: ремонт и подгонка одежды за 1–2 дня. Укоротим брюки, заменим молнию, ушьём платье. Ул. Тверская, 14, ежедневно 10:00–20:00.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --indigo: #1E2650;
+    --indigo-deep: #161C3E;
+    --indigo-soft: #2C3666;
+    --chalk: #F4F5F2;
+    --paper: #FFFFFF;
+    --tape: #F2C230;
+    --pin: #D6453D;
+    --ink: #232845;
+    --muted: #41465E;
+    --line: #CDD0DA;
+    --tg: #2AABEE;
+    --tg-dark: #1E96D4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--chalk);
+    color: var(--ink);
+    font-family: "Golos Text", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  h1, h2, h3 { font-family: "Unbounded", system-ui, sans-serif; font-weight: 700; line-height: 1.15; letter-spacing: -.01em; hyphens: manual; }
+  h2 { font-size: clamp(26px, 5vw, 42px); margin-bottom: 14px; }
+  h3 { font-size: 18px; font-weight: 500; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--tape); outline-offset: 3px; border-radius: 4px; }
+  .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 768px) { .container { padding: 0 32px; } }
+  .block { padding: 72px 0; }
+  @media (min-width: 900px) { .block { padding: 104px 0; } }
+  .lead { color: var(--muted); max-width: 600px; margin-bottom: 40px; font-size: 18px; }
+  .todo { background: #FFE9A8; color: #6B4E00; padding: 1px 8px; border-radius: 4px; font-weight: 600; font-size: .9em; border: 1px dashed #C9A227; }
+  .nowrap { white-space: nowrap; }
+
+  /* Кнопки */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 50px; padding: 12px 26px; border-radius: 999px;
+    font-weight: 700; font-size: 16px; text-decoration: none; border: 0;
+    transition: background .2s, box-shadow .2s;
+  }
+  .btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+  .btn-tg { background: var(--tg); color: #fff; text-shadow: 0 1px 1px rgba(0, 60, 100, .35); }
+  .btn-tg:hover { background: var(--tg-dark); }
+  /* На тёмном фоне у кнопки Telegram белая обводка – чтобы не сливалась с индиго */
+  .on-dark .btn-tg { box-shadow: 0 0 0 3px #fff; }
+  .on-dark .btn-tg:hover { box-shadow: 0 0 0 3px #fff, 0 8px 22px rgba(42, 171, 238, .45); }
+  .btn-line { color: #fff; box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .55); background: transparent; }
+  .btn-line:hover { box-shadow: inset 0 0 0 2px var(--tape); color: var(--tape); }
+
+  /* Шапка */
+  header { position: sticky; top: 0; z-index: 50; background: var(--indigo); color: #fff; border-bottom: 1px solid rgba(255, 255, 255, .08); }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 76px; }
+  .logo { display: inline-flex; align-items: center; gap: 10px; font-family: "Unbounded", sans-serif; font-weight: 700; font-size: clamp(19px, 5.2vw, 27px); letter-spacing: -.02em; text-decoration: none; white-space: nowrap; }
+  .logo i { font-style: normal; color: var(--tape); }
+  .logo svg { width: 1.35em; height: 1.35em; flex-shrink: 0; }
+  .menu { display: none; gap: 30px; list-style: none; }
+  .menu a { text-decoration: none; color: rgba(255, 255, 255, .78); font-weight: 500; }
+  .menu a:hover { color: var(--tape); }
+  @media (min-width: 900px) { .menu { display: flex; } }
+  header .btn { min-height: 44px; padding: 8px 18px; font-size: 15px; }
+  @media (max-width: 440px) { header .btn .long { display: none; } header .btn { padding: 8px 14px; } }
+  /* На самых узких телефонах в шапке остаётся только значок Telegram */
+  @media (max-width: 359px) { header .btn .short { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } header .btn { width: 44px; padding: 0; } }
+
+  /* Первый экран */
+  .hero { background: var(--indigo); color: #fff; position: relative; overflow: hidden; padding: 56px 0 170px; }
+  @media (min-width: 900px) { .hero { padding: 96px 0 210px; } }
+  .hero-grid { display: grid; gap: 32px; align-items: center; }
+  .hero-place { color: rgba(255, 255, 255, .82); margin-bottom: 22px; font-weight: 500; }
+  .hero h1 { font-size: clamp(27px, 7.4vw, 62px); max-width: 15ch; margin-bottom: 26px; }
+  .hero-text { font-size: 19px; max-width: 520px; color: rgba(255, 255, 255, .92); margin-bottom: 34px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+  .hero-hours { color: rgba(255, 255, 255, .82); font-size: 16px; }
+  /* Портновский манекен справа – только на широких экранах */
+  .hero-art { display: none; }
+  .hero-art svg { display: block; width: 100%; height: auto; }
+  @media (min-width: 900px) {
+    .hero-grid { grid-template-columns: 1.15fr .85fr; }
+    .hero-art { display: block; width: 100%; max-width: 440px; justify-self: center; position: relative; z-index: 1; margin-bottom: -60px; }
+  }
+  .hero-hours b { color: #fff; font-weight: 600; }
+
+  /* Сантиметровая лента */
+  .tape {
+    position: absolute; left: -4%; width: 108%; height: 62px; bottom: 60px;
+    transform: rotate(-4deg); transform-origin: left center;
+    display: flex; overflow: hidden;
+    background:
+      repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 60px) 0 0 / 100% 42% no-repeat,
+      repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 30px) 0 0 / 100% 28% no-repeat,
+      repeating-linear-gradient(90deg, var(--ink) 0 1px, transparent 1px 6px) 0 0 / 100% 16% no-repeat,
+      var(--tape);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, .35);
+    animation: unroll 1.4s cubic-bezier(.3, .7, .2, 1) .2s both;
+  }
+  .tape span { flex: 0 0 60px; padding: 26px 0 0 5px; font-family: "Unbounded", sans-serif; font-size: 13px; font-weight: 500; color: var(--ink); }
+  .tape span:nth-child(10n) { color: var(--pin); }
+  @keyframes unroll { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+  @media (min-width: 900px) { .tape { bottom: 80px; height: 70px; } }
+
+  /* Услуги – список со строчкой */
+  .services { list-style: none; border-top: 2px dashed var(--line); }
+  .service { display: grid; grid-template-columns: 64px 1fr; gap: 6px 20px; padding: 28px 0; border-bottom: 2px dashed var(--line); align-items: start; }
+  .service svg { width: 64px; height: 64px; color: var(--indigo); grid-row: span 2; }
+  .service h3 { font-size: clamp(18px, 2.4vw, 24px); }
+  .service p { color: var(--muted); max-width: 560px; font-size: 18px; }
+  @media (min-width: 900px) {
+    .service { grid-template-columns: 80px 1fr 1.2fr; gap: 32px; align-items: center; padding: 32px 0; }
+    .service svg { width: 72px; height: 72px; grid-row: auto; }
+  }
+  .not-do { margin-top: 26px; color: var(--muted); font-size: 17px; }
+
+  /* До / после */
+  .ba-section { background: var(--paper); }
+  .ba-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .ba-tab {
+    font: inherit; font-weight: 600; font-size: 15px; min-height: 44px; padding: 8px 20px;
+    border-radius: 999px; border: 2px solid var(--line); background: transparent; color: var(--ink); cursor: pointer;
+  }
+  .ba-tab[aria-selected="true"] { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+  .ba { --pos: 50%; position: relative; border-radius: 20px; overflow: hidden; background: #E6E8EE; aspect-ratio: 3 / 2; width: 100%; max-width: 840px; user-select: none; }
+  .ba svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .ba .after { clip-path: inset(0 0 0 var(--pos)); background: var(--chalk); }
+  .ba-line { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 3px; margin-left: -1.5px; background: var(--ink); pointer-events: none; }
+  .ba-knob {
+    position: absolute; top: 50%; left: var(--pos); width: 48px; height: 48px; margin: -24px 0 0 -24px;
+    border-radius: 50%; background: var(--tape); border: 3px solid var(--ink); pointer-events: none;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ba-knob svg { position: static; width: 24px; height: 24px; }
+  .ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+  .ba:has(input:focus-visible) .ba-knob { outline: 3px solid var(--tg); outline-offset: 3px; }
+  .ba-tag { position: absolute; top: 14px; padding: 4px 12px; border-radius: 6px; font-weight: 700; font-size: 14px; pointer-events: none; }
+  .ba-tag.before { left: 14px; background: var(--ink); color: #fff; }
+  .ba-tag.after-tag { right: 14px; background: var(--tape); color: var(--ink); }
+  .ba-caption { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; color: var(--muted); }
+  .ba-caption b { color: var(--ink); }
+
+  /* Почему удобно – жёлтая лента */
+  .perks { background: var(--tape); position: relative; }
+  .perks::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 0; height: 26px;
+    background:
+      repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 60px) 0 0 / 100% 100% no-repeat,
+      repeating-linear-gradient(90deg, var(--ink) 0 1px, transparent 1px 12px) 0 0 / 100% 45% no-repeat;
+  }
+  .perks.block { padding-top: 96px; }
+  .perks h2 { max-width: 16ch; }
+  .perk-row { display: grid; grid-template-columns: 1fr; margin-top: 36px; }
+  .perk { padding: 22px 0; border-top: 2px solid var(--ink); }
+  .perk strong { display: block; font-family: "Unbounded", sans-serif; font-size: clamp(26px, 4vw, 38px); font-weight: 700; line-height: 1.1; margin-bottom: 8px; }
+  .perk p { max-width: 34ch; font-size: 18px; }
+  @media (min-width: 700px) { .perk-row { grid-template-columns: 1fr 1fr; column-gap: 32px; } }
+  @media (min-width: 1000px) {
+    .perk-row { grid-template-columns: repeat(4, 1fr); column-gap: 0; }
+    .perk { border-top: 0; border-left: 2px solid var(--ink); padding: 6px 24px 10px; }
+  }
+
+  /* Цены по группам */
+  .price-groups { display: grid; gap: 0 48px; }
+  @media (min-width: 860px) { .price-groups { grid-template-columns: 1fr 1fr; gap: 12px 56px; } }
+  .pgroup { border-top: 3px solid var(--ink); }
+  .pgroup summary {
+    list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    min-height: 60px; padding: 14px 0; font-family: "Unbounded", sans-serif; font-size: 18px; font-weight: 500;
+  }
+  .pgroup summary::-webkit-details-marker { display: none; }
+  /* На телефоне: стрелка в круге показывает, что группу можно раскрыть */
+  .pgroup summary { gap: 12px; }
+  .pgroup summary::after {
+    content: ""; flex: 0 0 36px; height: 36px; border-radius: 50%;
+    background: var(--tape) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23232845' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center / 20px no-repeat;
+    transition: transform .25s;
+  }
+  .pgroup[open] summary::after { transform: rotate(180deg); }
+  @media (prefers-reduced-motion: reduce) { .pgroup summary::after { transition: none; } }
+  /* На компьютере все группы всегда открыты, стрелки нет */
+  @media (min-width: 860px) {
+    .pgroup summary { cursor: default; pointer-events: none; }
+    .pgroup summary::after { display: none; }
+    .pgroup::details-content { content-visibility: visible; display: block; height: auto; }
+  }
+  .prow { display: flex; align-items: baseline; gap: 8px; padding: 7px 0; }
+  .prow .name { font-weight: 500; }
+  .prow .term { color: var(--muted); font-size: 15.5px; white-space: nowrap; }
+  .prow .dots { flex: 1; border-bottom: 2px dotted var(--line); min-width: 16px; transform: translateY(-4px); }
+  .prow .price { font-weight: 700; white-space: nowrap; }
+  .pgroup .rows { padding-bottom: 18px; }
+  @media (max-width: 520px) {
+    .prow { flex-wrap: wrap; }
+    .prow .name { flex: 1 1 100%; }
+    .prow .term { order: 3; }
+    .prow .dots { order: 2; display: none; }
+    .prow .price { order: 4; margin-left: auto; }
+    .prow { border-bottom: 1px dashed var(--line); padding: 10px 0; }
+  }
+  .price-note { margin-top: 28px; padding-left: 16px; border-left: 4px solid var(--pin); max-width: 640px; color: var(--muted); }
+  .price-note a { color: var(--ink); font-weight: 600; }
+
+  /* Как работаем – нитка через шаги */
+  .how { background: var(--paper); }
+  .thread { list-style: none; display: grid; gap: 0; position: relative; counter-reset: step; }
+  .thread li { position: relative; padding: 0 0 36px 64px; }
+  .thread li::before {
+    counter-increment: step; content: counter(step);
+    position: absolute; left: 0; top: 0; width: 44px; height: 44px; border-radius: 50%;
+    background: var(--chalk); border: 2px solid var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Unbounded", sans-serif; font-weight: 700; font-size: 16px; z-index: 1;
+  }
+  .thread li::after { content: ""; position: absolute; left: 21px; top: 44px; bottom: 0; border-left: 2px dashed var(--pin); }
+  .thread li:last-child::after { display: none; }
+  .thread h3 { margin: 8px 0 6px; }
+  .thread p { color: var(--muted); max-width: 32ch; font-size: 18px; }
+  .thread-wrap { position: relative; }
+  .needle { display: none; }
+  @media (min-width: 900px) {
+    .thread { grid-template-columns: repeat(4, 1fr); gap: 28px; padding-right: 60px; }
+    .thread li { padding: 70px 0 0; }
+    .thread li::after { left: 44px; right: -28px; top: 21px; bottom: auto; border-left: 0; border-top: 2px dashed var(--pin); }
+    .thread li:last-child::after { display: block; right: -60px; }
+    .needle { display: block; position: absolute; right: 0; top: 10px; width: 64px; height: 24px; }
+  }
+
+  /* Отзывы – квитанции */
+  .receipts { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .receipt {
+    background: var(--paper); padding: 26px 24px 38px; position: relative;
+    box-shadow: 0 2px 0 var(--line);
+    /* зубчатый нижний край, как у оторванной квитанции */
+    -webkit-mask:
+      conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 20px 10px repeat-x,
+      linear-gradient(#000 0 0) top / 100% calc(100% - 10px) no-repeat;
+            mask:
+      conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 20px 10px repeat-x,
+      linear-gradient(#000 0 0) top / 100% calc(100% - 10px) no-repeat;
+  }
+  .receipt:nth-child(1) { transform: rotate(-1.2deg); }
+  .receipt:nth-child(3) { transform: rotate(1deg); }
+  .receipt .order { font-size: 15.5px; color: var(--muted); padding-bottom: 12px; margin-bottom: 14px; border-bottom: 2px dashed var(--line); }
+  .receipt .order b { color: var(--ink); }
+  .receipt blockquote { font-size: 18px; margin-bottom: 16px; }
+  .receipt .who { font-weight: 600; }
+  .receipt .todo { display: inline-block; margin-bottom: 14px; }
+
+  /* Контакты */
+  .contacts { background: var(--indigo); color: #fff; }
+  .contacts-grid { display: grid; gap: 40px; }
+  @media (min-width: 900px) { .contacts-grid { grid-template-columns: 1.2fr .8fr; align-items: stretch; } }
+  .address { font-family: "Unbounded", sans-serif; font-size: clamp(22px, 5.6vw, 44px); font-weight: 700; line-height: 1.15; margin: 8px 0 10px; }
+  .contacts .sub { color: rgba(255, 255, 255, .85); margin-bottom: 30px; font-size: 18px; }
+  .facts { list-style: none; display: grid; gap: 0; margin-bottom: 34px; max-width: 520px; }
+  .facts li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(255, 255, 255, .18); }
+  .facts li > span:first-child { color: rgba(255, 255, 255, .8); }
+  .facts li > span:last-child { text-align: right; font-weight: 600; }
+  /* Пометка «уточнить» на тёмном фоне: светлая плашка, тёмный текст */
+  .contacts .todo { background: #FFF4CC; color: #3D2E00; border: 2px dashed var(--tape); }
+  .contact-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+  .photo-stub {
+    min-height: 280px; border: 2px dashed rgba(255, 255, 255, .45); border-radius: 20px;
+    display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px;
+    color: rgba(255, 255, 255, .75); font-family: "Caveat", cursive; font-size: 26px;
+    background: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 12px, transparent 12px 24px);
+  }
+
+  footer { background: var(--indigo-deep); color: rgba(255, 255, 255, .7); padding: 32px 0; font-size: 15px; }
+  .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+  footer .logo { color: #fff; font-size: 16px; }
+  footer a { color: var(--tape); }
+
+  /* Нижняя панель Telegram на телефоне */
+  .tg-bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(244, 245, 242, .96); border-top: 1px solid var(--line);
+  }
+  .tg-bar .btn { width: 100%; }
+  body { padding-bottom: 72px; }
+  @media (min-width: 768px) { .tg-bar { display: none; } body { padding-bottom: 0; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .tape { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.2 1.8 11.7c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3Z"/></symbol>
+    <pattern id="teeth" width="10" height="8" patternUnits="userSpaceOnUse"><rect x="0" y="0" width="10" height="4" fill="#C9CCD4"/></pattern>
+  </defs>
+</svg>
+
+<header class="on-dark">
+  <div class="container nav">
+    <a href="#top" class="logo">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="17" fill="#F2C230"/><path d="M26 7 11 27" stroke="#1E2650" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="24.6" cy="9" rx="1.1" ry="2.4" transform="rotate(37 24.6 9)" fill="#F2C230"/><path d="M24.6 9.5c-5 3-1 8-6 11s-9 0-11 4" fill="none" stroke="#D6453D" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="2.5 2.5"/></svg>
+      <span>Игла <i>и</i> Нить</span>
+    </a>
+    <ul class="menu">
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#before-after">До и после</a></li>
+      <li><a href="#prices">Цены</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+    <a class="btn btn-tg" href="https://t.me/iglaniti_demo_bot" target="_blank" rel="noopener">
+      <svg aria-hidden="true"><use href="#i-tg"/></svg>
+      <span class="short">Написать<span class="long"> в Telegram</span></span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Первый экран -->
+  <section class="hero on-dark">
+    <div class="container hero-grid">
+      <div>
+      <p class="hero-place">Ателье в Москве, ул. Тверская, 14</p>
+      <h1>Подгоним и починим одежду <span class="nowrap">за 1–2 дня</span></h1>
+      <p class="hero-text">Укоротим брюки, заменим молнию, ушьём платье по фигуре. Пришлите фото вещи в Telegram – сразу подскажем цену и срок.</p>
+      <div class="hero-actions">
+        <a class="btn btn-tg" href="https://t.me/iglaniti_demo_bot" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-tg"/></svg>
+          Написать в Telegram
+        </a>
+        <span class="hero-hours"><b>Ежедневно 10:00–20:00</b><br>срочно – в день обращения</span>
+      </div>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 360 470" role="img" aria-label="Портновский манекен с сантиметровой лентой на талии и булавками">
+          <!-- подставка -->
+          <rect x="173" y="352" width="14" height="82" fill="#C9CCD4"/>
+          <path d="M180 430 118 462M180 430 242 462M180 430v34" stroke="#C9CCD4" stroke-width="7" stroke-linecap="round"/>
+          <!-- шея -->
+          <rect x="160" y="30" width="40" height="34" rx="4" fill="#3A4680"/>
+          <ellipse cx="180" cy="30" rx="26" ry="8" fill="#C9CCD4"/>
+          <circle cx="180" cy="18" r="7" fill="#C9CCD4"/>
+          <!-- корпус -->
+          <path d="M180 60C150 60 108 64 82 84 64 98 60 122 68 152c10 38 32 58 34 88 2 30-18 60-20 90-1 18 14 26 98 26s99-8 98-26c-2-30-22-60-20-90 2-30 24-50 34-88 8-30 4-54-14-68-26-20-68-24-98-24Z" fill="#2C3666" stroke="#F4F5F2" stroke-width="3"/>
+          <!-- швы мелом -->
+          <path d="M180 62v292" stroke="#F4F5F2" stroke-width="2" stroke-dasharray="7 7" opacity=".7"/>
+          <path d="M128 70c-6 50 10 100 6 160s-20 80-16 120M232 70c6 50-10 100-6 160s20 80 16 120" fill="none" stroke="#F4F5F2" stroke-width="2" stroke-dasharray="7 7" opacity=".45"/>
+          <!-- сантиметровая лента на талии и её хвост -->
+          <path d="M98 226q82 26 164 0v20q-82 26-164 0Z" fill="#F2C230"/>
+          <path d="M104 230q76 24 152 0" fill="none" stroke="#232845" stroke-width="7" stroke-dasharray="1.5 7"/>
+          <path d="M262 226c20 6 30 40 22 80s10 70 30 84l-12 14c-26-18-38-52-32-96s-2-60-8-62Z" fill="#F2C230"/>
+          <rect x="296" y="386" width="20" height="26" rx="3" transform="rotate(35 306 399)" fill="#D6453D"/>
+          <!-- булавки -->
+          <g stroke="#9AA1A8" stroke-width="2.5" stroke-linecap="round">
+            <path d="M120 130l14 18M150 118l6 22M232 124l-8 20"/>
+          </g>
+          <circle cx="120" cy="130" r="6" fill="#D6453D"/>
+          <circle cx="150" cy="118" r="6" fill="#F2C230"/>
+          <circle cx="232" cy="124" r="6" fill="#D6453D"/>
+          <!-- пометки мелом -->
+          <path d="M84 290l14 10M98 290l-14 10M262 290l14 10M276 290l-14 10" stroke="#F4F5F2" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="tape" id="tape" aria-hidden="true"></div>
+  </section>
+
+  <!-- Услуги -->
+  <section id="services" class="block">
+    <div class="container">
+      <h2>Что мы делаем</h2>
+      <p class="lead">Ремонтируем и подгоняем одежду, которую вы уже любите – чтобы она снова сидела как надо.</p>
+      <ul class="services">
+        <li class="service">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true"><path d="M18 6h28l4 52H38L32 22l-6 36H14L18 6Z"/><path d="M18 13h28"/><path d="M14 50h12M38 50h12" stroke-dasharray="3 3"/></svg>
+          <h3>Подгонка по фигуре</h3>
+          <p>Ушьём платье или юбку, укоротим брюки и джинсы, подгоним рукава пиджака и куртки.</p>
+        </li>
+        <li class="service">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 4v56"/><path d="M26 10h4M34 14h4M26 18h4M34 22h4M26 26h4M34 30h4M26 34h4M34 38h4"/><rect x="25" y="42" width="14" height="10" rx="3"/><path d="M32 52v6"/></svg>
+          <h3>Молнии и фурнитура</h3>
+          <p>Заменим молнию или бегунок, пришьём пуговицы. Нужная фурнитура обычно есть на месте.</p>
+        </li>
+        <li class="service">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M50 8 16 50"/><ellipse cx="48" cy="11" rx="2" ry="4" transform="rotate(38 48 11)"/><path d="M48 12c-8 10 4 18-6 26s-18 2-28 14" stroke-dasharray="4 4"/></svg>
+          <h3>Ремонт и штопка</h3>
+          <p>Аккуратно заделаем разрыв или шов нитками в тон, сделаем почти незаметную штопку.</p>
+        </li>
+        <li class="service">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true"><path d="M22 6 8 14v44h48V14L42 6"/><path d="M22 6c2 6 6 9 10 9s8-3 10-9"/><path d="M32 15v43"/><path d="M14 36h10M40 36h10"/></svg>
+          <h3>Куртки и пальто</h3>
+          <p>Заменим подкладку, починим пуховик с потерей наполнителя, отремонтируем карманы.</p>
+        </li>
+      </ul>
+      <p class="not-do">Мы не шьём одежду с нуля, не занимаемся химчисткой и ремонтом обуви.</p>
+    </div>
+  </section>
+
+  <!-- До / после -->
+  <section id="before-after" class="block ba-section">
+    <div class="container">
+      <h2>До и после</h2>
+      <p class="lead">Потяните ползунок, чтобы сравнить вещь до работы мастера и после.</p>
+
+      <div class="ba-tabs" role="tablist" aria-label="Примеры работ">
+        <button class="ba-tab" role="tab" aria-selected="true" data-pair="pants">Брюки</button>
+        <button class="ba-tab" role="tab" aria-selected="false" data-pair="zip">Молния</button>
+        <button class="ba-tab" role="tab" aria-selected="false" data-pair="dress">Платье</button>
+      </div>
+
+      <div class="ba" id="ba">
+        <!-- Брюки -->
+        <div class="pair" data-pair="pants">
+          <svg class="before" viewBox="0 0 600 400" role="img" aria-label="До: брюки длинные, складками лежат на полу">
+            <line x1="0" y1="382" x2="600" y2="382" stroke="#A9AEBD" stroke-width="3"/>
+            <rect x="222" y="22" width="156" height="26" rx="3" fill="#2E3C73"/>
+            <path d="M222 48h156l14 332h-78l-14-250-14 250h-78Z" fill="#3B4C8A" stroke="#232845" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M212 340q20 10 44 0M216 360q22 10 48 0M334 340q22 10 44 0M332 360q24 10 52 0" fill="none" stroke="#232845" stroke-width="3"/>
+            <text x="30" y="300" font-family="Caveat, cursive" font-size="30" fill="#5B6078">путаются</text><text x="30" y="332" font-family="Caveat, cursive" font-size="30" fill="#5B6078">под ногами</text>
+          </svg>
+          <svg class="after" viewBox="0 0 600 400" role="img" aria-label="После: брюки укорочены на 6 сантиметров">
+            <line x1="0" y1="382" x2="600" y2="382" stroke="#A9AEBD" stroke-width="3"/>
+            <rect x="222" y="22" width="156" height="26" rx="3" fill="#2E3C73"/>
+            <path d="M222 48h156l12 290h-74l-16-208-16 208h-74Z" fill="#3B4C8A" stroke="#232845" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M212 328h72M318 328h70" stroke="#F2C230" stroke-width="2.5" stroke-dasharray="6 5"/>
+            <path d="M180 338h260" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
+            <text x="420" y="330" font-family="Caveat, cursive" font-size="34" fill="#D6453D">−6 см</text>
+          </svg>
+        </div>
+        <!-- Молния -->
+        <div class="pair" data-pair="zip" hidden>
+          <svg class="before" viewBox="0 0 600 400" role="img" aria-label="До: молния на куртке разошлась снизу">
+            <path d="M150 20h146v180l-30 180H150Z" fill="#6F7F5B" stroke="#3D4731" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M304 20h146v360H334l-30-180Z" fill="#6F7F5B" stroke="#3D4731" stroke-width="3" stroke-linejoin="round"/>
+            <rect x="291" y="20" width="18" height="182" fill="url(#teeth)"/>
+            <g transform="rotate(9.5 296 200)"><rect x="282" y="200" width="10" height="182" fill="url(#teeth)"/></g>
+            <g transform="rotate(-9.5 304 200)"><rect x="308" y="200" width="10" height="182" fill="url(#teeth)"/></g>
+            <g transform="rotate(24 300 214)"><rect x="288" y="200" width="24" height="30" rx="5" fill="#9AA1A8" stroke="#3D4731" stroke-width="2"/><rect x="295" y="230" width="10" height="30" rx="4" fill="#9AA1A8" stroke="#3D4731" stroke-width="2"/></g>
+            <text x="20" y="330" font-family="Caveat, cursive" font-size="30" fill="#232845">разошлась</text>
+          </svg>
+          <svg class="after" viewBox="0 0 600 400" role="img" aria-label="После: новая молния застёгивается до конца">
+            <path d="M150 20h146v360H150Z" fill="#6F7F5B" stroke="#3D4731" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M304 20h146v360H304Z" fill="#6F7F5B" stroke="#3D4731" stroke-width="3" stroke-linejoin="round"/>
+            <rect x="291" y="20" width="18" height="360" fill="url(#teeth)"/>
+            <rect x="288" y="96" width="24" height="30" rx="5" fill="#E3E5EA" stroke="#3D4731" stroke-width="2"/>
+            <rect x="295" y="126" width="10" height="34" rx="4" fill="#E3E5EA" stroke="#3D4731" stroke-width="2"/>
+            <text x="470" y="300" font-family="Caveat, cursive" font-size="32" fill="#D6453D">новая</text><text x="470" y="332" font-family="Caveat, cursive" font-size="32" fill="#D6453D">молния</text>
+          </svg>
+        </div>
+        <!-- Платье -->
+        <div class="pair" data-pair="dress" hidden>
+          <svg class="before" viewBox="0 0 600 400" role="img" aria-label="До: платье сидит мешком">
+            <path d="M262 20v40M338 20v40" stroke="#1F5956" stroke-width="5"/>
+            <path d="M250 60h100l22 60-8 50 60 212H176l60-212-8-50Z" fill="#2F7F7A" stroke="#1F5956" stroke-width="3" stroke-linejoin="round"/>
+            <text x="30" y="200" font-family="Caveat, cursive" font-size="30" fill="#5B6078">сидит</text><text x="30" y="232" font-family="Caveat, cursive" font-size="30" fill="#5B6078">мешком</text>
+          </svg>
+          <svg class="after" viewBox="0 0 600 400" role="img" aria-label="После: платье ушито по талии на 3 сантиметра">
+            <path d="M262 20v40M338 20v40" stroke="#1F5956" stroke-width="5"/>
+            <path d="M250 60h100l20 60-26 50 64 212H192l64-212-26-50Z" fill="#2F7F7A" stroke="#1F5956" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M372 120l-26 50M228 120l26 50" stroke="#fff" stroke-width="3" stroke-dasharray="8 6"/>
+            <text x="420" y="160" font-family="Caveat, cursive" font-size="32" fill="#D6453D">−3 см</text><text x="420" y="192" font-family="Caveat, cursive" font-size="32" fill="#D6453D">в талии</text>
+          </svg>
+        </div>
+
+        <span class="ba-tag before">До</span>
+        <span class="ba-tag after-tag">После</span>
+        <div class="ba-line"></div>
+        <div class="ba-knob"><svg viewBox="0 0 24 24" fill="none" stroke="#232845" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6 3 12l6 6M15 6l6 6-6 6"/></svg></div>
+        <input type="range" min="0" max="100" value="50" id="ba-range" aria-label="Сравнить до и после">
+      </div>
+
+      <p class="ba-caption">
+        <span id="ba-text"><b>Укоротить брюки</b> – 400–600 ₽, 1 день</span>
+        <span class="todo">Рисунки для примера – заменить на свои фото до/после</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Почему удобно -->
+  <section class="perks block">
+    <div class="container">
+      <h2>Почему к нам удобно</h2>
+      <div class="perk-row">
+        <div class="perk"><strong>1–2 дня</strong><p>Обычный срок большинства работ. Пуговицу пришьём при вас.</p></div>
+        <div class="perk"><strong>Сегодня</strong><p>Срочно – в день обращения, если мастер свободен (+50% к цене).</p></div>
+        <div class="perk"><strong>По фото</strong><p>Пришлите фото в Telegram – назовём ориентир по цене и сроку ещё до визита.</p></div>
+        <div class="perk"><strong>7 дней</strong><p>Работаем без выходных, с 10:00 до 20:00.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Цены -->
+  <section id="prices" class="block">
+    <div class="container">
+      <h2>Цены</h2>
+      <p class="lead">Точную стоимость мастер назовёт после осмотра вещи – она зависит от ткани и сложности.</p>
+      <div class="price-groups">
+        <details class="pgroup" open>
+          <summary>Подгонка</summary>
+          <div class="rows">
+            <div class="prow"><span class="name">Укоротить брюки или джинсы</span><span class="term">1 день</span><span class="dots"></span><span class="price">400–600 ₽</span></div>
+            <div class="prow"><span class="name">Ушить платье или юбку</span><span class="term">после примерки</span><span class="dots"></span><span class="price">от 700 ₽</span></div>
+            <div class="prow"><span class="name">Ушить или укоротить рукава</span><span class="term">1–2 дня</span><span class="dots"></span><span class="price">700–1500 ₽</span></div>
+          </div>
+        </details>
+        <details class="pgroup" open>
+          <summary>Молнии и фурнитура</summary>
+          <div class="rows">
+            <div class="prow"><span class="name">Заменить молнию</span><span class="term">1–2 дня</span><span class="dots"></span><span class="price">500–800 ₽</span></div>
+            <div class="prow"><span class="name">Заменить бегунок</span><span class="term">1 день</span><span class="dots"></span><span class="price">300–500 ₽</span></div>
+            <div class="prow"><span class="name">Пришить пуговицу</span><span class="term">при вас</span><span class="dots"></span><span class="price">50–100 ₽/шт.</span></div>
+          </div>
+        </details>
+        <details class="pgroup" open>
+          <summary>Ремонт</summary>
+          <div class="rows">
+            <div class="prow"><span class="name">Разрыв или шов</span><span class="term">1 день</span><span class="dots"></span><span class="price">300–700 ₽</span></div>
+            <div class="prow"><span class="name">Заплатка или аппликация</span><span class="term">1–2 дня</span><span class="dots"></span><span class="price">500–1000 ₽</span></div>
+            <div class="prow"><span class="name">Штопка, почти незаметная</span><span class="term">2–3 дня</span><span class="dots"></span><span class="price">500–1200 ₽</span></div>
+            <div class="prow"><span class="name">Ремонт или замена кармана</span><span class="term">1 день</span><span class="dots"></span><span class="price">400–800 ₽</span></div>
+          </div>
+        </details>
+        <details class="pgroup" open>
+          <summary>Куртки и пальто</summary>
+          <div class="rows">
+            <div class="prow"><span class="name">Ремонт пуховика</span><span class="term">1–3 дня</span><span class="dots"></span><span class="price">700–1500 ₽</span></div>
+            <div class="prow"><span class="name">Подкладка в пиджаке</span><span class="term">3–5 дней</span><span class="dots"></span><span class="price">1500–2500 ₽</span></div>
+            <div class="prow"><span class="name">Подкладка в куртке или пальто</span><span class="term">3–5 дней</span><span class="dots"></span><span class="price">2500–4000 ₽</span></div>
+          </div>
+        </details>
+      </div>
+      <p class="price-note">Срочный ремонт в день обращения – +50% к цене, если позволяет загрузка мастера. Нет вашей работы в списке? <a href="https://t.me/iglaniti_demo_bot" target="_blank" rel="noopener">Напишите нам в Telegram</a> – подскажем.</p>
+    </div>
+  </section>
+
+  <!-- Как мы работаем -->
+  <section id="how" class="block how">
+    <div class="container">
+      <h2>Как мы работаем</h2>
+      <p class="lead">От сообщения до готовой вещи – четыре шага.</p>
+      <div class="thread-wrap">
+      <ol class="thread">
+        <li><h3>Напишите</h3><p>Пришлите фото вещи в Telegram – назовём ориентир по цене и сроку.</p></li>
+        <li><h3>Принесите</h3><p>Приходите на Тверскую, 14 в любое время с 10:00 до 20:00.</p></li>
+        <li><h3>Примерка</h3><p>Мастер посмотрит вещь, при необходимости снимет мерки и назовёт точную цену.</p></li>
+        <li><h3>Заберите</h3><p>Обычно через 1–2 дня вещь готова и сидит как надо.</p></li>
+      </ol>
+        <svg class="needle" viewBox="0 0 64 24" aria-hidden="true"><path d="M2 12 L58 9 Q63 12 58 15 Z" fill="#9AA1A8" stroke="#232845" stroke-width="1.5"/><ellipse cx="52" cy="12" rx="4" ry="1.3" fill="#fff"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Отзывы -->
+  <section class="block">
+    <div class="container">
+      <h2>Отзывы</h2>
+      <p class="lead">Что говорят клиенты после того, как забрали вещь.</p>
+      <div class="receipts">
+        <article class="receipt">
+          <span class="todo">Пример – заменить</span>
+          <p class="order">Заказ: <b>укоротить джинсы</b></p>
+          <blockquote>«Укоротили джинсы за один день, сохранили фирменный шов внизу. Очень аккуратно.»</blockquote>
+          <p class="who">Имя клиента</p>
+        </article>
+        <article class="receipt">
+          <span class="todo">Пример – заменить</span>
+          <p class="order">Заказ: <b>замена молнии</b></p>
+          <blockquote>«Заменили молнию на любимой куртке, теперь она снова со мной. Спасибо!»</blockquote>
+          <p class="who">Имя клиента</p>
+        </article>
+        <article class="receipt">
+          <span class="todo">Пример – заменить</span>
+          <p class="order">Заказ: <b>оценка по фото</b></p>
+          <blockquote>«Прислала фото в Telegram, сразу узнала цену. Удобно, что не нужно ехать наугад.»</blockquote>
+          <p class="who">Имя клиента</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section id="contacts" class="block contacts on-dark">
+    <div class="container contacts-grid">
+      <div>
+        <h2>Приходите к нам</h2>
+        <p class="address">Москва, <span class="nowrap">ул. Тверская, 14</span></p>
+        <p class="sub">Вход со двора. Можно без записи.</p>
+        <ul class="facts">
+          <li><span>Часы работы</span><span>Ежедневно, 10:00–20:00</span></li>
+          <li><span>Телефон</span><span><span class="todo">[Телефон – уточнить]</span></span></li>
+          <li><span>Срочный ремонт</span><span>В день обращения, +50%</span></li>
+        </ul>
+        <div class="contact-actions">
+          <a class="btn btn-tg" href="https://t.me/iglaniti_demo_bot" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#i-tg"/></svg>
+            Написать в Telegram
+          </a>
+          <a class="btn btn-line" href="https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%A2%D0%B2%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2C%2014" target="_blank" rel="noopener">Открыть на Яндекс Картах</a>
+        </div>
+      </div>
+      <div class="photo-stub">Фото входа или вывески – заменить</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div><span class="logo">Игла и Нить</span><br>Ремонт и подгонка одежды, © 2026</div>
+    <div>Москва, ул. Тверская, 14 (вход со двора)<br>Ежедневно 10:00–20:00, <a href="https://t.me/iglaniti_demo_bot" target="_blank" rel="noopener">Telegram</a></div>
+  </div>
+</footer>
+
+<div class="tg-bar">
+  <a class="btn btn-tg" href="https://t.me/iglaniti_demo_bot" target="_blank" rel="noopener">
+    <svg aria-hidden="true"><use href="#i-tg"/></svg>
+    Написать в Telegram
+  </a>
+</div>
+
+<script>
+  // Деления сантиметровой ленты
+  (function () {
+    var tape = document.getElementById('tape');
+    var html = '';
+    for (var i = 1; i <= 40; i++) html += '<span>' + i + '</span>';
+    tape.innerHTML = html;
+  })();
+
+  // Ползунок «до/после» и вкладки
+  (function () {
+    var ba = document.getElementById('ba');
+    var range = document.getElementById('ba-range');
+    var text = document.getElementById('ba-text');
+    var captions = {
+      pants: '<b>Укоротить брюки</b> – 400–600 ₽, 1 день',
+      zip: '<b>Заменить молнию</b> – 500–800 ₽, 1–2 дня',
+      dress: '<b>Ушить платье</b> – от 700 ₽, цена после примерки'
+    };
+    range.addEventListener('input', function () { ba.style.setProperty('--pos', range.value + '%'); });
+    document.querySelectorAll('.ba-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var name = tab.dataset.pair;
+        document.querySelectorAll('.ba-tab').forEach(function (t) { t.setAttribute('aria-selected', t === tab); });
+        ba.querySelectorAll('.pair').forEach(function (p) { p.hidden = p.dataset.pair !== name; });
+        text.innerHTML = captions[name];
+        range.value = 50; ba.style.setProperty('--pos', '50%');
+      });
+    });
+  })();
+
+  // Цены: на телефоне открыта только первая группа, остальные раскрываются по нажатию
+  (function () {
+    var mobile = window.matchMedia('(max-width: 859px)');
+    var last = null;
+    function setGroups() {
+      if (mobile.matches === last) return;
+      last = mobile.matches;
+      document.querySelectorAll('.pgroup').forEach(function (d, i) { d.open = !mobile.matches || i === 0; });
+    }
+    setGroups();
+    window.addEventListener('resize', setGroups);
+  })();
+</script>
+
+</body>
+</html>

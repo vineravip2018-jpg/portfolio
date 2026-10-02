@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Невидимый шов – ремонт и подгонка одежды из кожи, меха, шёлка и кашемира в Москве</title>
+<meta name="description" content="Ателье «Невидимый шов» на Малой Бронной, 8: бережный ремонт и подгонка брендовой одежды, кожи, меха, шёлка и кашемира. Незаметная штопка, подгонка свадебных и вечерних платьев, курьер по Москве.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Onest:wght@300;400;500;600&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #F4EFE2;       /* фон – слоновая кость */
+    --ivory-light: #FAF7EF; /* светлые блоки */
+    --green: #1F3A2E;       /* текст и тёмные разделы – бутылочный зелёный */
+    --green-soft: #465A50;  /* второстепенный текст */
+    --brass-text: #7D6A43;  /* латунь для цифр – темнее, чтобы читалась */
+    --brass: #9A8457;       /* приглушённая латунь – линии и детали */
+    --tg: #2AABEE;        /* Telegram */
+    --tg-dark: #1E96D4;
+    --line: rgba(31, 58, 46, .16);
+    --wrap: 1160px;
+    --gutter: 16px;
+  }
+  @media (min-width: 700px) { :root { --gutter: 40px; } }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--ivory);
+    color: var(--green);
+    font-family: "Onest", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+
+  h1, h2, h3 {
+    font-family: "Prata", Georgia, serif;
+    font-weight: 400;
+    line-height: 1.15;
+    margin: 0;
+    hyphens: manual;
+    overflow-wrap: normal;
+    word-break: normal;
+    text-wrap: balance;
+  }
+  h1 { font-size: clamp(2.3rem, 7.4vw, 3.4rem); letter-spacing: -.01em; }
+  @media (min-width: 1200px) { h1 { font-size: 4rem; } }
+  h2 { font-size: clamp(1.85rem, 4.6vw, 3rem); }
+  h3 { font-size: clamp(1.45rem, 3vw, 2rem); }
+  p { margin: 0 0 1em; max-width: 36em; }
+  .nowrap { white-space: nowrap; }
+
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* Пометка «пример» */
+  .demo {
+    display: inline-block;
+    font-size: .78rem;
+    line-height: 1.3;
+    color: var(--green-soft);
+    background: rgba(164, 138, 91, .16);
+    border: 1px dashed var(--brass);
+    border-radius: 4px;
+    padding: 2px 7px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .demo-bar {
+    background: var(--green);
+    color: var(--ivory-light);
+    font-size: .85rem;
+    text-align: center;
+    padding: 8px var(--gutter);
+  }
+
+  /* Кнопки */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 52px; padding: 0 28px;
+    border-radius: 999px;
+    font: 500 1rem/1 "Onest", sans-serif;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color .2s, border-color .2s;
+  }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn-tg { background: var(--tg); color: #fff; }
+  .btn-tg:hover { background: var(--tg-dark); }
+  .btn-quiet { border-color: var(--green); color: var(--green); }
+  .btn-quiet:hover { background: var(--green); color: var(--ivory-light); }
+
+  /* Шапка */
+  header.top {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(244, 239, 226, .92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 84px; }
+  .logo { text-decoration: none; display: flex; align-items: baseline; gap: 14px; }
+  .logo b { font-family: "Prata", serif; font-weight: 400; font-size: 2.35rem; line-height: 1; letter-spacing: .01em; white-space: nowrap; }
+  .logo span { font-size: .85rem; font-weight: 300; letter-spacing: .02em; color: #7A877F; white-space: nowrap; }
+  @media (max-width: 699px) { .top .wrap { height: 72px; } .logo b { font-size: 2.1rem; } }
+  nav.menu { display: none; gap: 28px; }
+  nav.menu a { text-decoration: none; font-size: .95rem; color: var(--green-soft); }
+  nav.menu a:hover { color: var(--green); }
+  .top .btn { min-height: 44px; padding: 0 20px; font-size: .95rem; }
+  @media (min-width: 1040px) { nav.menu { display: flex; } }
+  @media (max-width: 1100px) { .logo span { display: none; } }
+  @media (max-width: 699px) { .top .btn { display: none; } }
+
+  /* Шов – наметочная нить */
+  .page { position: relative; }
+  .seam {
+    display: none;
+    position: absolute; top: 0; bottom: 0;
+    left: max(calc((100vw - var(--wrap)) / 2 + var(--gutter) - 28px), 14px);
+    width: 2px;
+    background: repeating-linear-gradient(to bottom, var(--brass) 0 10px, transparent 10px 20px);
+    opacity: .75;
+    pointer-events: none;
+    animation: stitch 2.4s cubic-bezier(.4,0,.2,1) .3s both;
+  }
+  @keyframes stitch { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+  @media (min-width: 1000px) { .seam { display: block; } }
+  @media (prefers-reduced-motion: reduce) { .seam { animation: none; } html { scroll-behavior: auto; } }
+
+  section { padding: clamp(72px, 11vw, 150px) 0; }
+
+  /* Первый экран – фото на всю ширину, текст поверх */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    min-height: max(560px, calc(100svh - 160px));
+    display: flex; align-items: center;
+    padding: clamp(56px, 7vw, 96px) 0;
+    color: var(--ivory-light);
+    overflow: hidden;
+  }
+  .hero-bg { position: absolute; inset: 0; z-index: -2; margin: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 85% 50%; display: block; }
+  /* зелёная вуаль слева – чтобы текст читался, а руки мастера справа оставались видны */
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background:
+      linear-gradient(90deg, rgba(20, 38, 30, .92) 0%, rgba(20, 38, 30, .78) 38%, rgba(20, 38, 30, .25) 72%, rgba(20, 38, 30, .1) 100%),
+      linear-gradient(0deg, rgba(20, 38, 30, .55) 0%, rgba(20, 38, 30, 0) 45%);
+  }
+  @media (max-width: 859px) {
+    .hero::before { background: linear-gradient(0deg, rgba(20, 38, 30, .94) 0%, rgba(20, 38, 30, .8) 55%, rgba(20, 38, 30, .35) 100%); }
+  }
+  .hero .wrap { width: 100%; }
+  .hero-text { max-width: 760px; }
+  .hero-place { font-size: .95rem; color: #D9CFB4; margin-bottom: 18px; letter-spacing: .02em; }
+  .hero h1 { margin-bottom: 28px; color: var(--ivory-light); }
+  @media (min-width: 1200px) { .hero h1 { font-size: 4.6rem; } }
+  .hero .lead { font-size: 1.15rem; color: #E6E1D3; margin-bottom: 36px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .hero .btn-tg { box-shadow: 0 0 0 2px rgba(250, 247, 239, .9); }
+  .hero .btn-quiet { border-color: rgba(250, 247, 239, .75); color: var(--ivory-light); }
+  .hero .btn-quiet:hover { background: var(--ivory-light); color: var(--green); }
+  .hero-note { margin-top: 28px; font-size: .92rem; color: #D9CFB4; }
+  .hero-credit { position: absolute; right: var(--gutter); bottom: 14px; font-size: .75rem; color: rgba(250, 247, 239, .7); }
+
+  /* Фото (Unsplash, источники – в комментариях у каждого фото) */
+  .photo {
+    position: relative;
+    margin: 0;
+    border-radius: 2px;
+    overflow: hidden;
+    width: 100%;
+    min-width: 0;
+    background: #E4DDCB; /* пока фото грузится */
+  }
+  .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* тонкая светлая рамка внутри фото – как паспарту */
+  .photo::after { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(250, 247, 239, .55); pointer-events: none; }
+  .photo-hero { aspect-ratio: 4 / 5; }
+
+  /* Что мы делаем */
+  .intro { max-width: 640px; margin-bottom: clamp(48px, 7vw, 96px); }
+  .intro h2 { margin-bottom: 20px; }
+  .intro p { color: var(--green-soft); }
+  .kind { display: grid; gap: 28px; align-items: center; }
+  .kind + .kind { margin-top: clamp(64px, 9vw, 120px); }
+  .kind .photo { aspect-ratio: 5 / 4; }
+  .kind h3 { margin-bottom: 16px; }
+  .kind p { color: var(--green-soft); }
+  .kind ul { list-style: none; padding: 0; margin: 20px 0 0; }
+  .kind li { padding: 10px 0; border-top: 1px solid var(--line); }
+  .kind li:last-child { border-bottom: 1px solid var(--line); }
+  @media (min-width: 860px) {
+    .kind { grid-template-columns: 1.1fr 1fr; gap: 72px; }
+    .kind.flip .photo { order: 2; }
+    .kind .photo { aspect-ratio: 4 / 5; }
+    .kind .photo.wide { aspect-ratio: 5 / 4; }
+  }
+  .not-do { margin: 28px 0 0; font-size: .95rem; color: var(--green-soft); max-width: none; }
+  #services { padding-bottom: clamp(56px, 7vw, 96px); }
+
+  /* Материалы */
+  .fabrics { background: var(--ivory-light); }
+  .swatches { display: grid; gap: 40px 28px; margin-top: 8px; }
+  @media (min-width: 560px) { .swatches { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 900px) { .swatches { grid-template-columns: repeat(4, 1fr); } }
+  /* Лоскут: настоящее фото материала, нижний край – как после зигзаг-ножниц */
+  .swatch .cloth {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: #E4DDCB; /* пока фото грузится */
+    -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 18px 100%;
+            mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 18px 100%;
+    margin: 0 0 18px;
+  }
+  .swatch .cloth img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .swatch h3 { font-size: 1.4rem; margin-bottom: 6px; }
+  .swatch p { font-size: .95rem; color: var(--green-soft); margin: 0; }
+  .handmade {
+    margin-top: clamp(64px, 9vw, 110px);
+    padding-left: 28px;
+    border-left: 2px dashed var(--brass);
+    max-width: 760px;
+  }
+  .handmade p { font-family: "Prata", serif; font-size: clamp(1.3rem, 2.6vw, 1.75rem); line-height: 1.45; margin: 0 0 14px; max-width: none; }
+  .handmade span { font-size: .95rem; color: var(--green-soft); }
+
+  /* Курьер – шаги по шву */
+  .steps { list-style: none; padding: 0; margin: 0; position: relative; max-width: 760px; counter-reset: s; }
+  .steps::before {
+    content: ""; position: absolute; left: 21px; top: 22px; bottom: 22px; width: 2px;
+    background: repeating-linear-gradient(to bottom, var(--brass) 0 10px, transparent 10px 20px);
+  }
+  .steps li { position: relative; padding: 0 0 44px 76px; counter-increment: s; }
+  .steps li:last-child { padding-bottom: 0; }
+  .steps li::before {
+    content: counter(s);
+    position: absolute; left: 0; top: -4px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--ivory); border: 1px solid var(--brass);
+    display: grid; place-items: center;
+    font-family: "Prata", serif; font-size: 1.1rem; color: var(--brass-text);
+  }
+  .steps h3 { font-size: 1.45rem; margin-bottom: 8px; }
+  .steps p { color: var(--green-soft); margin: 0; }
+  .courier-note { margin-top: 48px; color: var(--green-soft); font-size: .95rem; }
+
+  /* Цены */
+  .prices { background: var(--ivory-light); }
+  .prices .wrap { display: grid; gap: 40px; }
+  @media (min-width: 900px) { .prices .wrap { grid-template-columns: .8fr 1.2fr; gap: 80px; } }
+  .price-list { list-style: none; padding: 0; margin: 0; }
+  .price-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .price-list li:first-child { border-top: 1px solid var(--line); }
+  .price-list .name { font-size: 1.05rem; }
+  .price-list .name small { display: block; font-size: .9rem; color: var(--green-soft); }
+  .price-list .cost { font-family: "Prata", serif; font-size: 1.2rem; white-space: nowrap; }
+  .prices .side p { color: var(--green-soft); }
+
+  /* Отзывы */
+  .reviews .grid { display: grid; gap: 48px; margin-top: 48px; }
+  @media (min-width: 860px) { .reviews .grid { grid-template-columns: 1fr 1fr; gap: 80px; } .reviews .grid blockquote:nth-child(2) { margin-top: 90px; } }
+  blockquote { margin: 0; }
+  blockquote p { font-family: "Prata", serif; font-size: clamp(1.2rem, 2.3vw, 1.5rem); line-height: 1.5; margin-bottom: 18px; }
+  blockquote footer { color: var(--green-soft); font-size: .95rem; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+  /* Контакты */
+  .contacts { background: var(--ivory-light); color: var(--green); border-top: 1px solid var(--line); }
+  .contacts .wrap { display: grid; gap: 48px; }
+  @media (min-width: 900px) { .contacts .wrap { grid-template-columns: 1.1fr .9fr; gap: 80px; align-items: start; } }
+  .contacts h2 { margin-bottom: 20px; }
+  .contacts .lead { color: var(--green-soft); margin-bottom: 32px; }
+  .contacts dl { margin: 0; }
+  .contacts dt { font-size: .9rem; color: var(--brass-text); margin-bottom: 4px; }
+  .contacts dd { margin: 0 0 26px; font-size: 1.1rem; }
+  .contacts dd a { text-decoration-color: var(--brass); text-underline-offset: 4px; }
+
+  footer.bottom { background: var(--green); color: #C9D2C8; font-size: .9rem; }
+  footer.bottom .wrap { padding-top: 28px; padding-bottom: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+  /* Нижняя панель на телефоне */
+  .mobile-bar { display: none; }
+  @media (max-width: 699px) {
+    .mobile-bar {
+      display: flex; gap: 10px;
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+      padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
+      background: rgba(250, 247, 239, .96);
+      border-top: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+    .mobile-bar .btn { flex: 1; min-height: 48px; padding: 0 14px; }
+    .mobile-bar .btn-quiet { flex: 0 0 auto; }
+    body { padding-bottom: 72px; }
+    .hero .actions .btn { width: 100%; }
+    .contacts .actions .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.3 1.8 11.8c-1-.3-1-1 .2-1.5L20.6 3.1c.9-.3 1.6.2 1.3 1.2Z"/></symbol>
+</svg>
+
+<div class="demo-bar">Демо-версия: цены, условия курьера и отзывы – пример, заменить на реальные. Фото – с Unsplash, лучше заменить на свои. Телефон – уточнить.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Невидимый шов – наверх"><b>Невидимый шов</b><span>ателье на Малой Бронной</span></a>
+    <nav class="menu" aria-label="Разделы">
+      <a href="#services">Что чиним</a>
+      <a href="#materials">Материалы</a>
+      <a href="#courier">Курьер</a>
+      <a href="#prices">Цены</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="btn btn-tg" href="https://t.me/iglaniti_demo_bot" target="_blank" rel="noopener">
+      <svg aria-hidden="true"><use href="#i-tg"/></svg>
+      Написать
+    </a>
+  </div>
+</header>
+
+<main class="page" id="top">
+  <div class="seam" aria-hidden="true"></div>
+
+  <section class="hero">
+    <figure class="hero-bg">
+      <!-- Фото: Alexander Grey, Unsplash – https://unsplash.com/photos/person-in-gray-shirt-sewing-TAZUc51iPUM
+           Лицензия Unsplash: бесплатно, в том числе для коммерческого использования. Лучше заменить на фото своего мастера. -->
+      <img src="https://images.unsplash.com/photo-1606501126768-b78d4569d3f9?auto=format&fit=crop&w=2000&q=80" alt="Рука мастера ведёт шерстяную ткань под лапкой швейной машины" fetchpriority="high">
+    </figure>
+    <div class="wrap">
+      <div class="hero-text">
+        <p class="hero-place">Ателье в Москве, <span class="nowrap">ул. Малая Бронная, 8</span></p>
+        <h1>Ремонт, которого не видно</h1>
+        <p class="lead">Подгоняем и восстанавливаем одежду из кожи, меха, шёлка и кашемира. Штопаем так, что место ремонта сложно найти, подгоняем свадебные и вечерние платья, а курьер заберёт и привезёт вещь.</p>
+        <div class="actions">
+          <a class="btn btn-tg" href="https://t.me/iglaniti_demo_bot" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#i-tg"/></svg>
+            Показать вещь в Telegram
+          </a>
+          <a class="btn btn-quiet" href="#prices">Посмотреть цены</a>
+        </div>
+        <p class="hero-note">Пришлите фото – мастер оценит работу ещё до встречи.</p>
+      </div>
+    </div>
+    <span class="hero-credit">фото – заменить на своё</span>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Что мы делаем</h2>
+        <p>Мы работаем с вещами, которые жалко доверить случайному мастеру: любимое пальто известного бренда, платье на свадьбу, шуба, которую носила ещё мама.</p>
+      </div>
+
+      <article class="kind">
+        <figure class="photo">
+          <!-- Фото: Caleb Wright (@calecrunchy), Unsplash – https://unsplash.com/photos/Z4ZkP4DH_TM (лицензия Unsplash) -->
+          <img src="https://images.unsplash.com/photo-1643209444864-de08a545289a?auto=format&fit=crop&w=1000&q=80" alt="Тонкая шерстяная ткань пальто и ровная строчка крупным планом" width="800" height="1000" loading="lazy">
+        </figure>
+        <div>
+          <h3>Незаметная штопка и реставрация</h3>
+          <p>Восстанавливаем ткань после моли, зацепок и прожогов. Нить подбираем в тон, иногда берём её из припуска на изнанке самой вещи.</p>
+          <ul>
+            <li>Штопка кашемира, шерсти и трикотажа</li>
+            <li>Восстановление разошедшихся швов нитью в тон</li>
+            <li>Замена подкладки с сохранением фирменных ярлыков</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="kind flip">
+        <figure class="photo">
+          <!-- Фото: Aneta Voborilova (@anetvob), Unsplash – https://unsplash.com/photos/ekHkF65XR-A (лицензия Unsplash) -->
+          <img src="https://images.unsplash.com/photo-1632378464836-a6a856632552?auto=format&fit=crop&w=1000&q=80" alt="Руки поправляют кружево на свадебном платье" width="800" height="1000" loading="lazy">
+        </figure>
+        <div>
+          <h3>Подгонка свадебных и вечерних платьев</h3>
+          <p>Подгоняем платье, купленное в салоне или онлайн, чтобы оно сидело так, будто сшито на вас. Делаем примерки в ателье, пока посадка не станет точной.</p>
+          <ul>
+            <li>Ушить по фигуре, подогнать корсет</li>
+            <li>Укоротить подол с кружевом, не теряя узора</li>
+            <li>Пришить петлю для шлейфа, подшить подол вручную</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="kind">
+        <figure class="photo wide">
+          <!-- Фото: Yasamine June (@yasamine), Unsplash – https://unsplash.com/photos/U4Ewfl8ewq0 (лицензия Unsplash) -->
+          <img src="https://images.unsplash.com/photo-1633655442356-ab2dbc69c772?auto=format&fit=crop&w=1200&q=80" alt="Портной раскладывает образцы костюмных тканей и пуговицы" width="1000" height="800" loading="lazy">
+        </figure>
+        <div>
+          <h3>Подгонка брендовой одежды</h3>
+          <p>Пиджаки, пальто, брюки и платья известных марок. Сохраняем фирменные строчки, фурнитуру и ярлыки, чтобы вещь выглядела как с витрины.</p>
+          <ul>
+            <li>Укоротить рукав пиджака с рабочими пуговицами</li>
+            <li>Подогнать пальто по плечам и длине</li>
+            <li>Заменить молнию на кожаной куртке</li>
+          </ul>
+        </div>
+      </article>
+
+      <p class="not-do">Мы не шьём одежду с нуля, не занимаемся химчисткой и ремонтом обуви.</p>
+    </div>
+  </section>
+
+  <section class="fabrics" id="materials">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Материалы, которые требуют опыта</h2>
+        <p>Кожу и шёлк нельзя перешить второй раз: каждый прокол иглы остаётся навсегда. Поэтому мы сначала пробуем шов на изнанке или на припуске и только потом работаем с лицевой стороной.</p>
+      </div>
+      <div class="swatches">
+        <div class="swatch">
+          <!-- Фото: Jayanth Muppaneni (@jay_5), Unsplash – https://unsplash.com/photos/m5o4dOHAibM (лицензия Unsplash) -->
+          <figure class="cloth"><img src="https://images.unsplash.com/photo-1716295177956-420a647c83ac?auto=format&fit=crop&w=700&q=75" alt="Коричневая кожа со строчкой крупным планом" width="700" height="525" loading="lazy"></figure>
+          <h3>Кожа и замша</h3><p>Укорачиваем, меняем молнии, заделываем порезы. Шьём специальной иглой, без лишних проколов.</p>
+        </div>
+        <div class="swatch">
+          <!-- Фото: Margaret Giatras (@margaretann110), Unsplash – https://unsplash.com/photos/hZbOdTvyM8I (лицензия Unsplash) -->
+          <figure class="cloth"><img src="https://images.unsplash.com/photo-1784254175579-cbdf12dd9208?auto=format&fit=crop&w=700&q=75" alt="Гладкий коричневый мех крупным планом" width="700" height="525" loading="lazy"></figure>
+          <h3>Мех</h3><p>Восстанавливаем разошедшиеся швы, укорачиваем шубы, меняем подкладку и крючки.</p>
+        </div>
+        <div class="swatch">
+          <!-- Фото: Susan Wilkinson (@susan_wilkinson), Unsplash – https://unsplash.com/photos/R_bv0S9MC8c (лицензия Unsplash) -->
+          <figure class="cloth"><img src="https://images.unsplash.com/photo-1606259457945-67dc66271ee6?auto=format&fit=crop&w=700&q=75" alt="Складки кремового шёлка крупным планом" width="700" height="525" loading="lazy"></figure>
+          <h3>Шёлк</h3><p>Работаем тонкой иглой, подол подшиваем вручную, чтобы шов не тянул ткань.</p>
+        </div>
+        <div class="swatch">
+          <!-- Фото: mk. s (@mk__s), Unsplash – https://unsplash.com/photos/3X8FhFqImLg (лицензия Unsplash) -->
+          <figure class="cloth"><img src="https://images.unsplash.com/photo-1673498855550-7056979b3ccd?auto=format&fit=crop&w=700&q=75" alt="Мягкое серое кашемировое полотно крупным планом" width="700" height="525" loading="lazy"></figure>
+          <h3>Кашемир</h3><p>Штопаем так, что место ремонта сложно найти даже вблизи.</p>
+        </div>
+      </div>
+      <div class="handmade">
+        <p>Если сделать ремонт незаметным нельзя, мы скажем об этом до начала работы и предложим, как сохранить вещь по-другому.</p>
+        <span>Мастер ателье <span class="demo">имя – пример</span></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="courier">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Курьер от двери до двери</h2>
+        <p>Если некогда ехать на Малую Бронную, курьер заберёт вещь и вернёт её готовой. А можно прийти самим – ежедневно с 10:00 до 20:00, без записи.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Пришлите фото</h3><p>Напишите в Telegram, что нужно сделать, и приложите фото вещи и ярлыка. Мастер подскажет ориентир по цене и сроку.</p></li>
+        <li><h3>Курьер заберёт вещь</h3><p>Договоримся об удобном времени. Курьер привезёт вещь в ателье в чехле.</p></li>
+        <li><h3>Осмотр и примерка</h3><p>Мастер осмотрит вещь и назовёт точную цену. Если нужна подгонка по фигуре – пригласим на примерку.</p></li>
+        <li><h3>Работа мастера</h3><p>Ремонтируем бережно и не торопясь. Если срочно – сделаем в день обращения, когда мастер свободен (+50% к цене).</p></li>
+        <li><h3>Вещь снова у вас</h3><p>Отпариваем, упаковываем в чехол, и курьер привозит её домой или в офис.</p></li>
+      </ol>
+      <p class="courier-note">Район и время работы курьера <span class="demo">пример – уточнить</span></p>
+    </div>
+  </section>
+
+  <section class="prices" id="prices">
+    <div class="wrap">
+      <div class="side">
+        <h2>Цены</h2>
+        <p>Точную стоимость мастер назовёт после осмотра – она зависит от материала, бренда и сложности работы.</p>
+        <p>Срочно, в день обращения – +50% к цене.</p>
+        <p><span class="demo">все цены – пример, заменить</span></p>
+      </div>
+      <ul class="price-list">
+        <li><span class="name">Незаметная штопка кашемира<small>одно место повреждения</small></span><span class="cost">от 2 500 ₽</span></li>
+        <li><span class="name">Подгонка свадебного платья<small>с примерками</small></span><span class="cost">от 6 000 ₽</span></li>
+        <li><span class="name">Укоротить вечернее платье<small>подол вручную</small></span><span class="cost">от 3 000 ₽</span></li>
+        <li><span class="name">Укоротить рукав пиджака<small>с рабочими пуговицами</small></span><span class="cost">от 3 500 ₽</span></li>
+        <li><span class="name">Заменить молнию на кожаной куртке</span><span class="cost">от 4 500 ₽</span></li>
+        <li><span class="name">Ремонт шубы<small>швы, крючки, подкладка</small></span><span class="cost">от 5 000 ₽</span></li>
+        <li><span class="name">Курьер по Москве<small>забрать и привезти</small></span><span class="cost">от 1 000 ₽</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="reviews">
+    <div class="wrap">
+      <h2>Что говорят клиенты</h2>
+      <div class="grid">
+        <blockquote>
+          <p>«На любимом кашемировом пальто моль проела дырочку на самом видном месте. Теперь я сама не могу найти, где она была».</p>
+          <footer>Имя клиента, штопка пальто <span class="demo">пример отзыва – заменить на реальный</span></footer>
+        </blockquote>
+        <blockquote>
+          <p>«Платье заказывала онлайн, и оно было велико на два размера. После двух примерок сидело идеально, кружево на подоле сохранили целиком».</p>
+          <footer>Имя клиента, свадебное платье <span class="demo">пример отзыва – заменить на реальный</span></footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="contacts" id="contacts">
+    <div class="wrap">
+      <div>
+        <h2>Покажите нам вашу вещь</h2>
+        <p class="lead">Пришлите фото в Telegram и напишите, что хотите исправить. Мы ответим, как можно помочь, и предложим курьера или время визита.</p>
+        <div class="actions">
+          <a class="btn btn-tg" href="https://t.me/iglaniti_demo_bot" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#i-tg"/></svg>
+            Написать в Telegram
+          </a>
+          <a class="btn btn-quiet" href="https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%9C%D0%B0%D0%BB%D0%B0%D1%8F%20%D0%91%D1%80%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2C%208" target="_blank" rel="noopener">Открыть на Яндекс Картах</a>
+        </div>
+      </div>
+      <dl>
+        <dt>Адрес</dt>
+        <dd>Москва, <span class="nowrap">ул. Малая Бронная, 8</span>, вход со двора</dd>
+        <dt>Часы работы</dt>
+        <dd>Ежедневно, 10:00–20:00, можно без записи</dd>
+        <dt>Телефон</dt>
+        <dd><span class="demo">Телефон – уточнить</span></dd>
+        <dt>Telegram</dt>
+        <dd><a href="https://t.me/iglaniti_demo_bot" target="_blank" rel="noopener">@iglaniti_demo_bot</a></dd>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer class="bottom">
+  <div class="wrap">
+    <span>Ателье «Невидимый шов», ремонт и подгонка одежды, 2026</span>
+    <span>Москва, ул. Малая Бронная, 8, ежедневно 10:00–20:00</span>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="btn btn-tg" href="https://t.me/iglaniti_demo_bot" target="_blank" rel="noopener">
+    <svg aria-hidden="true"><use href="#i-tg"/></svg>
+    Написать в Telegram
+  </a>
+</div>
+
+</body>
+</html>

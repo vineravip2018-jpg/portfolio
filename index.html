@@ -59,6 +59,16 @@
   .btn-tg { background: var(--tg); color: var(--white); }
   .btn svg { width: 22px; height: 22px; flex: none; }
 
+  /* Свечение и волна на кнопках */
+  .btn { position: relative; overflow: hidden; transition: box-shadow .25s, transform .25s; }
+  .btn::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.38) 50%, transparent 65%); transform: translateX(-130%); pointer-events: none; }
+  .btn:hover, .btn:focus-visible { box-shadow: 0 10px 30px -6px rgba(242,107,15,.75), 0 0 0 3px rgba(242,107,15,.28); transform: translateY(-1px); }
+  .btn:hover::after { animation: wave .8s ease; }
+  .hero .btn-tg, .contact .btn-tg { box-shadow: 0 12px 32px -8px rgba(242,107,15,.7); }
+  .hero .btn-tg::after { animation: wave 4s ease 1.5s infinite; }
+  @keyframes wave { 0% { transform: translateX(-130%); } 22%, 100% { transform: translateX(130%); } }
+  @media (prefers-reduced-motion: reduce) { .btn::after { animation: none !important; } }
+
   /* Шапка */
   .top { background: var(--paper); }
   .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 18px; padding-bottom: 18px; }
